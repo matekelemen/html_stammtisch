@@ -358,12 +358,12 @@
   * CUSTOM
   *********************************************/
 
-img:hover {
-    transform: scale(1.25);
-    -ms-transform: scale(1.25);
-    -webkit-transform: scale(1.25);
-    -moz-transform: scale(1.25);
-    -o-transform: scale(1.25);
+.reveal .slides img:hover {
+    transform: scale(3.25);
+    -ms-transform: scale(3.25);
+    -webkit-transform: scale(3.25);
+    -moz-transform: scale(3.25);
+    -o-transform: scale(3.25);
 }
 
 figcaption {
