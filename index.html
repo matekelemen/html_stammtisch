@@ -25,6 +25,127 @@
                     <div>... and then some text</div>
                 </section>
 
+                <section data-auto-animate>
+                    <h1>Automatic Layout</h1>
+                    <p>The browser automatically computes the layout of <em>"slides"</em></p>
+                    <p>depending on the content of its children</p>
+                </section>
+
+                <section data-auto-animate>
+                    <h1>Automatic Layout</h1>
+                    <p>The browser automatically computes the layout of <em>"slides"</em></p>
+                    <img src="https://i.pinimg.com/originals/e7/95/d3/e795d3bfaa35b8843bf27b83e65a111d.gif"/>
+                    <p>depending on the content of its children</p>
+                </section>
+
+                <section>
+                    <h1>Sick Animations</h1>
+                    <p class="fragment">Stuff can fade right in</p>
+                    <p class="fragment fade-in-then-out">even fade in then fade out</p>
+                    <span class="fragment fade-down">
+                        <span class="fragment highlight-blue">
+                            <span class="fragment strike">
+                                <span class="fragment semi-fade-out">
+                                    or do all sorts weird transitions
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                </section>
+
+                <section data-auto-animate>
+                    <h1>Code Formatting</h1>
+                    <pre data-id="code-animation"><code data-trim data-noescape data-line-numbers>
+                        template &ltclass T&gt
+                        class OptionalRef
+                        {
+                        private:
+                            using PtrInt = std::uintptr_t;
+                        public:
+                            OptionalRef() noexcept
+                            {
+                                mPointer.integer = 0;
+                            }
+
+                            explicit OptionalRef(T& p) noexcept
+                            {
+                                auto i = reinterpret_cast&ltPtrInt&gt(&p);
+                                mPointer.integer = i | 1;
+                            }
+
+                            bool has_value() const noexcept
+                            {
+                                return mPointer.integer & 1;
+                            }
+
+                            T& operator*() const
+                            {
+                                if (has_value()) {
+                                    auto i = mPointer.integer & ~static_cast&ltPtrInt&gt(1);
+                                    return *reinterpret_cast&ltT*&gt(i);
+                                } else {
+                                    throw std::bad_optional_access();
+                                }
+                            }
+                        private:
+                            union {
+                                T* pointer;
+                                PtrInt integer;
+                            } mPointer;
+                        };
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h1>Code Formatting</h1>
+                    <pre data-id="code-animation"><code data-trim data-noescape data-line-numbers="32-35|7-10|12-16|18-21|23-29">
+                        template &ltclass T&gt
+                        class OptionalRef
+                        {
+                        private:
+                            using PtrInt = std::uintptr_t;
+                        public:
+                            OptionalRef() noexcept
+                            {
+                                mPointer.integer = 0;
+                            }
+
+                            explicit OptionalRef(T& p) noexcept
+                            {
+                                auto i = reinterpret_cast&ltPtrInt&gt(&p);
+                                mPointer.integer = i | 1;
+                            }
+
+                            bool has_value() const noexcept
+                            {
+                                return mPointer.integer & 1;
+                            }
+
+                            T& operator*() const
+                            {
+                                if (has_value()) {
+                                    auto i = mPointer.integer & ~static_cast&ltPtrInt&gt(1);
+                                    return *reinterpret_cast&ltT*&gt(i);
+                                } else {
+                                    throw std::bad_optional_access();
+                                }
+                            }
+                        private:
+                            union {
+                                T* pointer;
+                                PtrInt integer;
+                            } mPointer;
+                        };
+                    </code></pre>
+                </section>
+
+                <section style="width: 100%; height: 100%;">
+                    <h1>Embedded HTML</h1>
+                    <iframe src="https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAMzwBtMA7AQwFtMQByARg9KtQYEAysib0QXACx8BBAKoBnTAAUAHpwAMvAFYTStJg1DIApACYAQuYukl9ZATwDKjdAGFUtAK4sGIAKwapK4AMngMmAByPgBGmMQB/qQADqgKhE4MHt6%2BAUGp6Y4CYRHRLHEJ/kl2mA6ZQgRMxATZPn6Btpj2RQwNTQQlUbHxibaNza25HQrjA%2BFD5SNVAJS2qF7EyOwc5gDM4cjeWADUJrtuBACeyZgA%2BgTETIQKZ9gmGgCCewdHmKfnyBm%2BEEr3eXzM%2BwYhy8JzOHmSPTEoM%2B3yhv3%2BbicM2ImFYyK%2BKM%2BBEwLGSBmJGMOTAUCmOABV8VSaccAPIIzJiABKmCoYJMAHYrJ9ksQ8AA3JjEkBg46y45edJGY7KB4ASUE/wAIscgSAQF5wgQEcR7mchR9kl4YrQ8MhpZ85az2QIuTyIMtjgxUJhVFsETK5QLzY7HSxlKhDfEAHSR4DxLXHDRmgOygWalOnB1yn1k22EJ2I2jcqgQBlmABsx2SHq9Pr9BAzQYzjqYXiIxzwCZxkeIIswBFuohmcJVxHVDd22Ag5nL1eTWZDxzDEcE0dj8bO2s7Arcxy484%2BjrTjYXxxiqE8xwQ1NuEu8mHdxzQDBmnu9vsw/tPTdPjpxBA2Bgl3DHsY1XONiFOCs9wPI9%2BXTb9TzLStUBuR4iGIAAqR9n2Hb9BWbOU8CoY4IGvBRbzELwH2WD0f0PRcQ1bdtt12bVl1A9dIJnY4AD8ZklW1B2pCc3FHcdXggLhllgxi/37QDjkw7tV17f9hOHc46UwyS8Bk3Zg0YtNji6JRTgI39GIIBBiFQAB3HUCHQPUYiYdBblQwtbiYZAthpd1ZMXY98IQi1RQlKUMy8BhMnMwzF20qsV2JYhApDcSNS4tLjI41SD2PAy%2BUJD5DSXJ4GAClELIY2VStY7UuDMbLTzZQtizhQ1XmOE08AgPS0t1FB1gIDE4SUnrRvORznJAVxaHylrnWYIseQ6kFJ3lGKYscMQ8AAL0wdA0oeS44sI2VBrQNtJt3TDovCDJdoO9AbumvU5uy%2BCn0lZAEFIwbXPczyOVobzfMwGkZzo6q5Mu%2BJuPOMbzDMQHjmBl1aGOHy/JeMwzFewaPsKkK%2BXgsEOFWWhOH8Xg/A4LRSFQTg3GsawdXWTY/j2HhSAITQKdWABrPJ9E4SReBYCQNCCOmGaZjheAUEAgj5%2BmKdIOBYCQH1ajbEhyEoJpgAUZRDC6IQEHsumebQUk6EEgRTYiWgLat/nSFt5I6BGYAuF2MwPdQO36GISJWG2XhPe94gWTbV27Nl3gdeQD5iGNzgk9UWoGmBDOZEEEQxHYKR8/kJQ1Hd3QuH0QxjFZyx9DwGIlcgVZ0ZfTgAFogU3UxLGsMw5bFeG8CwFv3TWDYtj0IFwid83LYTzgebsx5kmX9WqY4GnSETxnOGwLPkD1yDVAADnLTvy0kY5gF8vddijfGIBZ/uG%2BOXBCBIKDdmk3hVa0LRUgCBcRYASBPYWHQt7i13u7eWitla835kAreZhaZwLzgAgWpBh7EHSM4SQQA%3D"
+                            style="width: 100%; height: 75%;">
+                    </iframe>
+                </section>
+
                 <!-- ================ SLIDES END ================ -->
             </div>
         </div>
@@ -55,13 +176,13 @@
                                margin-left: 0;
                                margin-right: 5px;
                                margin-top: 0;"/>
-                    <div class="title"
-                         style="margin: 5px 5px 5px 5px;
+                    <div style="margin: 5px 5px 5px 5px;
                                 font-weight: bold;
-                                font-size: 14pt;">
+                                font-size: 1.3em;">
                         A Presentation Framework Superior to Powerpoint
                     </div>
-                    <div class="presenter" style="margin: 5px 5px 5px 5px;">
+                    <div class="presenter" style="margin: 5px 5px 5px 5px;
+                                                  font-size: 1.3em;">
                         Máté Kelemen
                     </div>
                 </div>
